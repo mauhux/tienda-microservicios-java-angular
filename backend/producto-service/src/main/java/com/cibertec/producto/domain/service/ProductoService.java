@@ -16,4 +16,6 @@ public interface ProductoService {
     ProductoResponseDto update(Integer id, ProductoRequestDto dto);
 
     void delete(Integer id);
+
+    void descontarStock(Integer id, Integer cantidad);
 }

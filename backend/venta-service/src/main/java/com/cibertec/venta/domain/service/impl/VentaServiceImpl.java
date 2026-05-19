@@ -71,9 +71,7 @@ public class VentaServiceImpl implements VentaService {
 
         log.info("Registrando nueva venta para cliente ID: {}", dto.clienteId());
 
-        log.info("Llamando a cliente-service mediante ClienteClient.findById({})", dto.clienteId());
         ClienteResponseDto cliente = clienteClient.findById(dto.clienteId());
-        log.info("Cliente validado: {} {}", cliente.nombres(), cliente.apellidos());
 
         Venta venta = new Venta();
         venta.setClienteId(cliente.id());
@@ -89,9 +87,7 @@ public class VentaServiceImpl implements VentaService {
                 throw new BadRequestException("La cantidad debe ser mayor a cero");
             }
 
-            log.info("Llamando a producto-service mediante ProductoClient.findById({})", detalleDto.productoId());
             ProductoResponseDto producto = productoClient.findById(detalleDto.productoId());
-            log.info("Producto encontrado: {} | Stock actual: {}", producto.descripcion(), producto.stock());
 
             if (producto.stock() < detalleDto.cantidad()) {
                 throw new BadRequestException("Stock insuficiente para el producto: " + producto.descripcion());
@@ -110,19 +106,19 @@ public class VentaServiceImpl implements VentaService {
 
             detalles.add(detalle);
             total = total.add(subtotal);
-
-            log.info("Llamando a producto-service para descontar stock. Producto ID: {}, cantidad: {}",
-                    producto.id(), detalleDto.cantidad());
-
-            //productoClient.descontarStock(producto.id(), detalleDto.cantidad());
-
-            log.info("Stock descontado correctamente para el producto: {}", producto.descripcion());
         }
 
         venta.setTotal(total);
         venta.setDetalles(detalles);
 
         Venta ventaGuardada = ventaRepository.save(venta);
+
+        for (DetalleVenta detalle : detalles) {
+            productoClient.descontarStock(
+                    detalle.getProductoId(),
+                    new StockRequestDto(detalle.getCantidad())
+            );
+        }
 
         log.info("Venta registrada correctamente con ID: {}", ventaGuardada.getId());
 

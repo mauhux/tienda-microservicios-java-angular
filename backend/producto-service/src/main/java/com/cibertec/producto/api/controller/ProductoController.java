@@ -2,6 +2,7 @@ package com.cibertec.producto.api.controller;
 
 import com.cibertec.producto.api.dto.ProductoRequestDto;
 import com.cibertec.producto.api.dto.ProductoResponseDto;
+import com.cibertec.producto.api.dto.StockRequestDto;
 import com.cibertec.producto.domain.service.ProductoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,14 @@ public class ProductoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {
         productoService.delete(id);
+    }
+
+    @PutMapping("/{id}/descontar-stock")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void descontarStock(
+            @PathVariable Integer id,
+            @Valid @RequestBody StockRequestDto dto
+    ) {
+        productoService.descontarStock(id, dto.cantidad());
     }
 }
