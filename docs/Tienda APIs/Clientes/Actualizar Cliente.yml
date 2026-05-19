@@ -1,0 +1,35 @@
+info:
+  name: Actualizar Cliente
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{cliente-url}}/api/v1/clientes/1"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: "{\r
+
+      \  \"nombres\": \"Juan Actualizado\",\r
+
+      \  \"apellidos\": \"Perez\",\r
+
+      \  \"dni\": \"12345678\",\r
+
+      \  \"email\": \"juan.perez@gmail.com\",\r
+
+      \  \"telefono\": \"987654321\",\r
+
+      \  \"direccion\": \"Av. Nueva 456\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

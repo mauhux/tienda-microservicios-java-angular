@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: venta-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/venta_db
+    username: postgres
+    password: sql
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+server:
+  port: 8087
+
+services:
+  cliente:
+    url: http://localhost:8085
+  producto:
+    url: http://localhost:8086

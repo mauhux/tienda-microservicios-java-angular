@@ -1,0 +1,15 @@
+info:
+  name: Listar Productos
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{producto-url}}/api/v1/productos"
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

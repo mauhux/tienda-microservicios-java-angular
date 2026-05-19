@@ -1,0 +1,35 @@
+info:
+  name: Crear Cliente
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{cliente-url}}/api/v1/clientes"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: "{\r
+
+      \  \"nombres\": \"Juan\",\r
+
+      \  \"apellidos\": \"Perez\",\r
+
+      \  \"dni\": \"12345678\",\r
+
+      \  \"email\": \"juan.perez@gmail.com\",\r
+
+      \  \"telefono\": \"987654321\",\r
+
+      \  \"direccion\": \"Av. Peru 123\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

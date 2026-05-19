@@ -1,0 +1,33 @@
+info:
+  name: Actualizar Producto
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{producto-url}}/api/v1/productos/1"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: "{\r
+
+      \  \"descripcion\": \"Monitor Samsung 27\",\r
+
+      \  \"precioUnitario\": 900.00,\r
+
+      \  \"stock\": 10,\r
+
+      \  \"estado\": \"DISPONIBLE\",\r
+
+      \  \"imgUrl\": \"https://example.com/monitor27.jpg\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

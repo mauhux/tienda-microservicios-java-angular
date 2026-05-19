@@ -1,0 +1,15 @@
+info:
+  name: Listar Ventas
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{venta-url}}/api/v1/ventas"
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

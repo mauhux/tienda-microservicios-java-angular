@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: producto-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/producto_db
+    username: postgres
+    password: sql
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+server:
+  port: 8086

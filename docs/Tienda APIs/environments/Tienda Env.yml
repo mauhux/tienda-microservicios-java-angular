@@ -1,0 +1,8 @@
+name: Tienda Env
+variables:
+  - name: cliente-url
+    value: http://localhost:8085
+  - name: producto-url
+    value: http://localhost:8086
+  - name: venta-url
+    value: http://localhost:8087
