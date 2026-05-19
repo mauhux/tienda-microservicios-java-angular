@@ -19,6 +19,9 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
+    com.cibertec.venta.client: DEBUG
+    feign:
+      Logger: DEBUG
 
 server:
   port: 8087
@@ -28,3 +31,11 @@ services:
     url: http://localhost:8085
   producto:
     url: http://localhost:8086
+
+  spring:
+    cloud:
+      openfeign:
+        client:
+          config:
+            default:
+              loggerLevel: FULL
