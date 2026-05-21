@@ -114,9 +114,21 @@ public class VentaServiceImpl implements VentaService {
         Venta ventaGuardada = ventaRepository.save(venta);
 
         for (DetalleVenta detalle : detalles) {
+
+            log.info(
+                    "Llamando a producto-service para descontar stock | Producto ID: {} | Cantidad: {}",
+                    detalle.getProductoId(),
+                    detalle.getCantidad()
+            );
+
             productoClient.descontarStock(
                     detalle.getProductoId(),
                     new StockRequestDto(detalle.getCantidad())
+            );
+
+            log.info(
+                    "Stock descontado correctamente en producto-service | Producto ID: {}",
+                    detalle.getProductoId()
             );
         }
 

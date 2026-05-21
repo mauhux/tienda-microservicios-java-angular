@@ -1,0 +1,31 @@
+{
+  "name": "Tienda Env",
+  "variables": [
+    {
+      "name": "cliente-url",
+      "value": "http://localhost:8085",
+      "type": "text",
+      "enabled": true,
+      "secret": false
+    },
+    {
+      "name": "producto-url",
+      "value": "http://localhost:8086",
+      "type": "text",
+      "enabled": true,
+      "secret": false
+    },
+    {
+      "name": "venta-url",
+      "value": "http://localhost:8087",
+      "type": "text",
+      "enabled": true,
+      "secret": false
+    }
+  ],
+  "info": {
+    "type": "bruno-environment",
+    "exportedAt": "2026-05-21T23:56:40.840Z",
+    "exportedUsing": "Bruno/v3.3.0"
+  }
+}
